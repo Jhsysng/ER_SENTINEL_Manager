@@ -3,6 +3,8 @@ package com.ctrlcv.er_sentinel_manager.data.dto;
 import com.ctrlcv.er_sentinel_manager.data.entity.Hospital;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -42,5 +44,5 @@ public class ESevereResponseDto {
     private String bronchoscopyAge;
     private String lowBirthWeightAge;
     private String radiologyAge;
-    private String updateTime;
+    private LocalDateTime updateTime;
 }
