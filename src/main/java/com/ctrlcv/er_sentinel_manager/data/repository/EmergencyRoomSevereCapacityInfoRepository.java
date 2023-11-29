@@ -6,5 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 
 public interface EmergencyRoomSevereCapacityInfoRepository extends JpaRepository<EmergencyRoomSevereCapacityInfo, Integer> {
-    Optional<EmergencyRoomSevereCapacityInfo> findByEmergencyRoomSevereCapacityInfodutyId(String dutyId);
+    Optional<EmergencyRoomSevereCapacityInfo> findByHospital_DutyId(String dutyId);
+
 }

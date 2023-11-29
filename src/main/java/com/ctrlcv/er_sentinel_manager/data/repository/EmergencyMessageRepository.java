@@ -7,5 +7,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface EmergencyMessageRepository extends JpaRepository<EmergencyMessage, Integer> {
-    List<EmergencyMessage> findByEmergencyMessageDutyId(String dutyId);
+    Optional<EmergencyMessage> findByHospital_DutyId(String dutyId);
+    List<EmergencyMessage> findAllByHospital_DutyId(String dutyId);
 }

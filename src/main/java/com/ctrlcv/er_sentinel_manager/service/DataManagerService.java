@@ -40,7 +40,7 @@ public class DataManagerService {
 
     public EquipmentResponseDto getEquipmentInfo(String dutyId){
         log.info("[getEquipmentInfo] input dutyId:{}",dutyId);
-        Optional<HospitalEquipment> hospitalEquipment=hospitalEquipmentRepository.findByHospitalDutyId(dutyId);
+        Optional<HospitalEquipment> hospitalEquipment=hospitalEquipmentRepository.findByHospital_DutyId(dutyId);
 
         if(hospitalEquipment.isPresent()){
             log.info("[getEquipmentInfo] hospitalEquipment Service do");
@@ -68,7 +68,7 @@ public class DataManagerService {
 
     public ERoomResponseDto getEmergencyRoom(String dutyId){
         log.info("[getEmergencyRoom] input dutyId:{}",dutyId);
-        Optional<EmergencyRoom> emergencyRoom=emergencyRoomRepository.findByEmergencyRoomDutyId(dutyId);
+        Optional<EmergencyRoom> emergencyRoom=emergencyRoomRepository.findByHospital_DutyId(dutyId);
         if(emergencyRoom.isPresent()){
             log.info("[getEmergencyRoom] emergencyRoom Service do");
             ERoomResponseDto eRoomResponseDto=new ERoomResponseDto();
@@ -92,7 +92,7 @@ public class DataManagerService {
 
     public ESevereResponseDto getEmergencySevere(String dutyId){
         log.info("[getEmergencySevere] input dutyId:{}",dutyId);
-        Optional<EmergencyRoomSevereCapacityInfo> emergencyRoomSevereCapacityInfo=emergencyRoomSevereCapacityInfoRepository.findByEmergencyRoomSevereCapacityInfodutyId(dutyId);
+        Optional<EmergencyRoomSevereCapacityInfo> emergencyRoomSevereCapacityInfo=emergencyRoomSevereCapacityInfoRepository.findByHospital_DutyId(dutyId);
         if(emergencyRoomSevereCapacityInfo.isPresent()){
             log.info("[getEmergencySevere] emergencyRoomSevereCapacityInfo Service do");
             ESevereResponseDto eSevereResponseDto=new ESevereResponseDto();
@@ -142,8 +142,7 @@ public class DataManagerService {
 
     public List<MessageResponseDto> getEmergencyMessage(String dutyId){
         log.info("[getEmergencyMessage] input dutyId:{}",dutyId);
-        List<MessageResponseDto> messageResponseDtoList=emergencyMessageRepository.findByEmergencyMessageDutyId(dutyId)
-                        .stream().map(MessageResponseDto::new).toList();
+        List<MessageResponseDto> messageResponseDtoList=emergencyMessageRepository.findAllByHospital_DutyId(dutyId).stream().map(MessageResponseDto::new).toList();
         return messageResponseDtoList;
     }
 

@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 
 public interface HospitalEquipmentRepository extends JpaRepository<HospitalEquipment, Integer> {
-    Optional<HospitalEquipment> findByHospitalDutyId(String dutyId);
+    Optional<HospitalEquipment> findByHospital_DutyId(String dutyId);
 }
 
